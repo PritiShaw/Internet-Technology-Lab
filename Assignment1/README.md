@@ -1,4 +1,4 @@
-Assignmnet1
+Assignment 1
 ---
 
 ### Problem Statement
@@ -12,16 +12,16 @@ Kolkata
 The server should be running on a TCP port. The server should support multiple clients and maintain their key-value stores separately. Implement authorization so that only few clients having the role **manager** can access other’s key-value stores. A user is assigned the **guest** role by default. The server can upgrade a **guest** user to a **manager** user.
 
 ### Implementation
-Every client is uniquely identified by the combination of host's IP address and the port. Server's port is binded to **9999**. 
-The program maintains two maps, one is global which holds key value for every client which is accessible onlu to the client whose role is `manager` and another map is locally available to each client for storing their key value pair.
+Every client is uniquely identified by the combination of host's IP address and the port. Server's port is binded to **9999**.   
+The program maintains two maps, one is global which holds key value for every client which is accessible onlu to the client whose role is `manager` and another map is locally available to each client for storing their key value pair.  
 The program also used socket programming for connecting clients and the server.
 
 ### How to Run 
-1. Start the server using `python3 server.py <HOST IP> <PORT>`
+1. Start the server using `python3 server.py <HOST IP> <PORT>`, the IP and Port of server will be displayed
 2. In the another terminal, run the client using `python3 client.py <HOST IP> <PORT> <REQUESTS>`
 
 ### Requests
- 1. **put key value**
- 2. **get key**
+ 1. **put *key value***
+ 2. **get *key***
  3. **upgrade**
- 4. **getall key**
+ 4. **getall *key***
