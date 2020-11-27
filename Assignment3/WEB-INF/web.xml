@@ -4,7 +4,7 @@
 
     <display-name>Travel Thru Air</display-name>
     <description>
-	    JU BCSE IV Internet Technology Lab Assignment 3 by Rohit Chattopadhyay (73)
+	    JU BCSE IV Internet Technology Lab Assignment 3 Priti Shaw (76)
     </description>
     <filter>
         <filter-name>setCharacterEncodingFilter</filter-name>
@@ -20,45 +20,15 @@
         <filter-name>setCharacterEncodingFilter</filter-name>
         <url-pattern>/*</url-pattern>
     </filter-mapping>
-    <servlet>
-        <servlet-name>SearchServlet</servlet-name>
-        <servlet-class>tta.SearchServlet</servlet-class>
-    </servlet>
 
     <servlet>
-        <servlet-name>AdminServlet</servlet-name>
-        <servlet-class>tta.AdminServlet</servlet-class>
+        <servlet-name>HelloWorld</servlet-name>
+        <servlet-class>travelThruAir.HelloWorldServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
-        <servlet-name>default</servlet-name>
-        <url-pattern>/images/*</url-pattern>
+        <servlet-name>HelloWorld</servlet-name>
+        <url-pattern>/HelloWorld</url-pattern>
     </servlet-mapping>
 
-    <servlet-mapping>
-        <servlet-name>SearchServlet</servlet-name>
-        <url-pattern></url-pattern>
-    </servlet-mapping>
-
-    <servlet-mapping>
-        <servlet-name>AdminServlet</servlet-name>
-        <url-pattern>/admin</url-pattern>
-    </servlet-mapping>
-
-    <security-constraint>
-        <web-resource-collection>
-            <url-pattern>/admin</url-pattern>
-        </web-resource-collection>
-        <auth-constraint>
-            <role-name>tta-admin</role-name>
-        </auth-constraint>
-
-        <user-data-constraint>
-            <transport-guarantee>NONE</transport-guarantee>
-        </user-data-constraint>
-    </security-constraint>
-
-    <login-config>
-        <auth-method>BASIC</auth-method>
-    </login-config>
 </web-app>
