@@ -1,0 +1,20 @@
+#searchBody{
+    height: 300px;
+    margin-top: 10px;
+}
+
+#searchRow{
+    padding-top: 100px;
+}
+
+#labelStyle{
+    font-weight: 900;
+    font-size: x-large;
+    padding-left: 10px;
+}
+#rupeeSymbol {
+    content: "\20B9";
+}
+#planeCard{
+    margin-top: 10px;
+}

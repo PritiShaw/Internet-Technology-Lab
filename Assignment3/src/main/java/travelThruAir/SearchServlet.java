@@ -18,13 +18,17 @@ public class SearchServlet extends HttpServlet {
     }
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        
+        String src=request.getParameter("src");
+        String dest=request.getParameter("dest");
+        int time =Integer.parseInt(request.getParameter("time"));
 
         // Set response content type
         response.setContentType("text/html");
 
         // Actual logic goes here.
         PrintWriter out = response.getWriter();
-        out.println("<h1>" + message + "</h1>");
+        out.println("<h1>" + src + " "+ dest+ " " + Integer.toString(time) + "</h1>");
     }
 
     public void destroy() {
