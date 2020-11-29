@@ -20,7 +20,7 @@
         }
     </style>
   </head>
-  <body class="bg-transparent pt-5">
+  <body class="bg-transparent pt-2">
     <div class="container pt-5 mt-5">
         <p class="display-4 text-center">Admin Panel</p>        
         <div class="col-6 offset-3 bg-white shadow border rounded">
@@ -29,13 +29,13 @@
                 <div class="form-row " >
                     <div class="col">
                         <div class="md-form">
-                            <input class="form-control" type="text" id="adminDeparture" list="airport_codes"  autocomplete="off"/>
+                            <input class="form-control" name="departure" type="text" id="adminDeparture" list="airport_codes"  autocomplete="off"/>
                             <label for="fromInput" id="adminDeparture">Departure</label>
                         </div>
                     </div>
                     <div class="col">
                         <div class="md-form">
-                            <input class="form-control" type="text" id="arrivalDeparture" list="airport_codes"  autocomplete="off"/>
+                            <input class="form-control" name = "arrival" type="text" id="arrivalDeparture" list="airport_codes"  autocomplete="off"/>
                             <label for="fromInput" id="arrivalDeparture">Arrival</label>
                         </div>
                     </div>
@@ -44,30 +44,32 @@
                     <div class="col">
                         <div class="md-form">
                             <input class="form-control" type="number" id="discount" required name="cost">
-                            <label for="fromInput" id="discount">Discounted Price</label>
+                            <label for="discount">Discounted Price</label>
                         </div>
                     </div>
                     <div class="col">
                         <div class="md-form">
                             <input class="form-control" id="exp" type="time" required name="expiry">
-                            <label class="active" for="exp">Valid till</label>
+                            <label class="active" for="expiry">Valid till</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row mt-2">
+                    <div class="col">
+                        <div class="md-form">
+                            <input class="form-control" type="password" id="password" required name="password">
+                            <label for="password">Password</label>
                         </div>
                     </div>
                 </div>
             <button class="btn btn-block btn-primary">Submit</button>
             <p class="w-100 text-success lead text-center py-2 mb-0">
-                <!-- <span class=<%=request.getAttribute("message")%>>Success</span> -->
+                <span><%=request.getAttribute("message")%></span>
             </p>
             </form>
         </div>
     </div>
-    <datalist id="airport_codes">
-    <!-- <%
-        Set<String> airports = (Set)request.getAttribute("airports");
-        if(airports != null)
-            for ( String airport: airports){%>
-                <option value=<%= airport %>>
-    <%}%> -->
+    <datalist id="airport_codes">    
    </datalist>
 
    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>

@@ -1,5 +1,6 @@
 <%@ page import = "java.util.*" %>
-
+<%@ page import = "travelThruAir.Deals" %>
+<%@ page import = "travelThruAir.Database" %>
 
 <!DOCTYPE html>
 <html>
@@ -99,28 +100,20 @@
       </div>
       <div class="col-12 d-flex flex-row justify-content-center flex-wrap">
 
-        <div class="card w-25 my-2 mx-3">
-          <img class="card-img-top" src="./images/deal1.jpg">
-          <div class="card-body text-center">
-            <p class="card-title h2 mb-0">BOM-CCU</p>
-            <div class="text-center">
-              <p class="mb-0 h3">&#8377;200</p>
-              <p class="text-muted">Valid till 1230</p>
+        <%
+        int i = 0;
+          for ( Deals deal: Database.getDeals()){%>
+            <div class="card w-25 my-2 mx-3">
+              <img class="card-img-top" src="./images/deal<%=i%>.jpg">
+              <div class="card-body text-center">
+                <p class="card-title h2 mb-0"><%= deal.getSector() %></p>
+                <div class="text-center">
+                  <p class="mb-0 h3">&#8377;<%= deal.getPrice() %></p>
+                  <p class="text-muted">Valid till <%= deal.getExpiryTime() %></p>
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
-
-        
-        <div class="card w-25 my-2 mx-3">
-          <img class="card-img-top" src="./images/deal1.jpg">
-          <div class="card-body text-center">
-            <p class="card-title h2 mb-0">BOM-CCU</p>
-            <div class="text-center">
-              <p class="mb-0 h3">&#8377;200</p>
-              <p class="text-muted">Valid till 1230</p>
-            </div>
-          </div>
-        </div>
+        <% i = (i+1)%10;}%>
 
       </div>
     </div>

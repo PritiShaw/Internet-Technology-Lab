@@ -19,16 +19,19 @@ public class SearchServlet extends HttpServlet {
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         
-        String src=request.getParameter("src");
-        String dest=request.getParameter("dest");
-        int time =Integer.parseInt(request.getParameter("time"));
+        // String src=request.getParameter("src");
+        // String dest=request.getParameter("dest");
+        // // int time =Integer.parseInt(request.getParameter("time"));
+        // String time = request.getParameter("time");
 
-        // Set response content type
-        response.setContentType("text/html");
 
-        // Actual logic goes here.
+        // // Set response content type
+        // response.setContentType("text/html");
+
+        // // Actual logic goes here.
         PrintWriter out = response.getWriter();
-        out.println("<h1>" + src + " "+ dest+ " " + Integer.toString(time) + "</h1>");
+        out.println("Test");
+        // out.println("<h1>" + src + " "+ dest+ " " + Integer.toString(time) + "</h1>");
     }
 
     public void destroy() {

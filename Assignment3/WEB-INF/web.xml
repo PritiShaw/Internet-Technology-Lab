@@ -22,13 +22,13 @@
     </filter-mapping>
 
     <servlet>
-        <servlet-name>HelloWorld</servlet-name>
-        <servlet-class>travelThruAir.HelloWorldServlet</servlet-class>
+        <servlet-name>AdminPage</servlet-name>
+        <servlet-class>travelThruAir.AdminServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
-        <servlet-name>HelloWorld</servlet-name>
-        <url-pattern>/HelloWorld</url-pattern>
+        <servlet-name>AdminPage</servlet-name>
+        <url-pattern>/admin</url-pattern>
     </servlet-mapping>
 
     <servlet>

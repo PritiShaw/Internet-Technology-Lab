@@ -1,0 +1,32 @@
+
+2020-11-29 20:29:51 Apache Commons Daemon procrun stdout initialized.
+123
+123
+123
+123
+123
+123
+java.sql.SQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '' at line 1
+INSERT INTO `deals` (`departure`, `arrival`, `discount`, `expiry`, `description`) VALUES ('BOM', 'CCU', '200', '1200', '';
+java.sql.SQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '' at line 1
+INSERT INTO `deals` (`departure`, `arrival`, `discount`, `expiry`, `description`) VALUES ('BOM', 'CCU', '200', '1200', '');
+INSERT INTO `deals` (`departure`, `arrival`, `discount`, `expiry`, `description`) VALUES ('BOM', 'CCU', '2', '1200', '');
+select * from deals where expiry>2203
+select * from deals where expiry>2203
+select * from deals where expiry>2203
+select * from deals where expiry>2203
+select * from deals where expiry>2203
+select * from deals where expiry>2203
+INSERT INTO `deals` (`departure`, `arrival`, `discount`, `expiry`, `description`) VALUES ('BOM', 'CCU', '2000', '2359', '');
+select * from deals where expiry>2204
+select * from deals where expiry>2208
+select * from deals where expiry>2209
+INSERT INTO `deals` (`departure`, `arrival`, `discount`, `expiry`, `description`) VALUES ('CCU', 'BOM', '8000', '2330', '');
+select * from deals where expiry>2209
+select * from deals where expiry>2211
+INSERT INTO `deals` (`departure`, `arrival`, `discount`, `expiry`, `description`) VALUES ('DGU', 'POI', '23', '401', '');
+select * from deals where expiry>2212
+select * from deals where expiry>2212
+select * from deals where expiry>2212
+select * from deals where expiry>2212
+select * from deals where expiry>2212
