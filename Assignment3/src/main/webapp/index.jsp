@@ -38,7 +38,7 @@
   <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light static-top">
       <div class="container">
-        <a class="navbar-brand" href="#">Travel Thru Air</a>
+        <a class="navbar-brand">Travel Thru Air</a>
         <button
           class="navbar-toggler"
           type="button"
@@ -53,7 +53,7 @@
         <div class="collapse navbar-collapse">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-              <a class="nav-link" href="#">Admin</a>
+              <a class="nav-link" href="./admin">Admin</a>
             </li>
           </ul>
         </div>
@@ -62,34 +62,35 @@
 
     <!-- Page Content -->
     <div class="container-fluid container-dark bg-primary" id ="searchBody" >
+    <form action="./search"/>
       <div class="row" id="searchRow">        
         <div class="col-3 offset-1">
           <div class="md-form from-lg">
-            <input type="text" id="fromInput" class="form-control text-white border-bottom">
-            <label for="fromInput" id="labelStyle" class="text-white">From</label>              
-            <p class="text-light">Airport Name</p>
+            <input name="dep" required type="text" id="fromDep" class="form-control text-white border-bottom">
+            <label for="fromDep" class="text-white">From</label>              
+            <p class="text-light" id="depName"></p>
           </div>
         </div>
         
         <div class="col-3">
           <div class="md-form from-lg">
-            <input type="text" id="fromInput" class="form-control text-white border-bottom">
-            <label for="fromInput" id="labelStyle" class="text-white">To</label>    
-            <p class="text-light">Airport Name</p>
+            <input name="arr" required type="text" id="fromArr" class="form-control text-white border-bottom">
+            <label for="fromArr" class="text-white">To</label>    
+            <p class="text-light" id="arrName"></p>
           </div>
         </div>
         
         <div class="col-2">
           <div class="md-form from-lg">
-            <input type="text" id="fromInput" class="form-control text-white border-bottom">
-            <label for="fromInput" id="labelStyle" class="text-white">Time</label>                   
+            <input name="time" required type="time" id="fromTime" class="form-control text-white border-bottom">
           </div>
         </div>
 
         <div class="col-2">
-          <button type="button" class="btn btn-warning">Search</button>
+          <button type="submit" class="btn btn-warning">Search</button>
         </div>
       </div>
+      </form>
     </div>
 
     <div class="container" id="planeCard">
@@ -104,7 +105,7 @@
         int i = 0;
           for ( Deals deal: Database.getDeals()){%>
             <div class="card w-25 my-2 mx-3">
-              <img class="card-img-top" src="./images/deal<%=i%>.jpg">
+              <img class="card-img-top" src="./images/deals/<%=i%>.png">
               <div class="card-body text-center">
                 <p class="card-title h2 mb-0"><%= deal.getSector() %></p>
                 <div class="text-center">

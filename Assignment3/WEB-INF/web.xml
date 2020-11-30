@@ -32,13 +32,13 @@
     </servlet-mapping>
 
     <servlet>
-        <servlet-name>Results</servlet-name>
+        <servlet-name>SearchPage</servlet-name>
         <servlet-class>travelThruAir.SearchServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
-        <servlet-name>Results</servlet-name>
-        <url-pattern>/results</url-pattern>
+        <servlet-name>SearchPage</servlet-name>
+        <url-pattern>/search</url-pattern>
     </servlet-mapping>
 
 </web-app>

@@ -4,17 +4,15 @@ package travelThruAir;
 import java.io.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
-import com.google.gson.Gson;
 
 // Extend HttpServlet class
 public class SearchServlet extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
-    private String message;
 
     public void init() throws ServletException {
         // Do required initialization
-        message = "Search";
+        return;
     }
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

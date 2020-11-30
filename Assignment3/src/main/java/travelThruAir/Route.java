@@ -1,4 +1,4 @@
-package teavelThruAir;
+package travelThruAir;
 
 import java.util.LinkedList;
 
@@ -9,19 +9,20 @@ public class Route {
    int flyingTime;
    LinkedList<Flight> flights;
 
-   public Route(LinkedList<Flight> flights){
+   public Route(LinkedList<Flight> flights) {
       int cost = 0;
       int start = -1;
       int end = 0;
-      for( Flight flight : flights){
-         if(start<0)
-            start = flight.getTakeOff();
-         cost += flight.getCost();
-         end = flight.getLanding();
+      for (Flight flight : flights) {
+         if (start < 0)
+            start = flight.getDepartureTime();
+         cost += flight.getPrice();
+         end = flight.getArrivalTime();
          flyingTime += flight.getDuration();
       }
       this.cost = cost;
       this.flights = flights;
+      this.end = end;
    }
 
    public int getStart() {
@@ -45,13 +46,13 @@ public class Route {
    }
 
    public void addFlight(Flight flight) throws Exception {
-      if (this.end > 0 && (flight.getTakeOff() < (this.end + 30)))
+      if (this.end > 0 && (flight.getDepartureTime() < (this.end + 30)))
          throw new Exception("Flights Overlap");
 
-      this.cost += flight.getCost();
+      this.cost += flight.getPrice();
       if (this.start < 0)
-         this.start = flight.getTakeOff();
-      this.end = flight.getLanding();
+         this.start = flight.getDepartureTime();
+      this.end = flight.getArrivalTime();
       this.flights.add(flight);
    }
 }

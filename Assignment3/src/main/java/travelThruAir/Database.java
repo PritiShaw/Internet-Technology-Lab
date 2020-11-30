@@ -1,14 +1,8 @@
 package travelThruAir;
 
 import java.sql.*;  
-import java.io.*;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-
-// this class will handle Database connections, we will write following methods
-// getDeals
-// addDeal
-// getFlights
 
 public class Database{
     private static String username = "root";
@@ -52,11 +46,4 @@ public class Database{
             System.out.println(e);
         }               
     }
-    
-    public static void main(){  
-        int i = 1;
-    }
-    // public static void addDeal(String depart, String arrival, int price, int expiryTime){
-
-    // }
 }

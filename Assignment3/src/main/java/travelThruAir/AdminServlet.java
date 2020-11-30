@@ -9,11 +9,10 @@ import javax.servlet.http.*;
 public class AdminServlet extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
-    private String message;
 
     public void init() throws ServletException {
         // Do required initialization
-        message = "Hello Admin";
+        return;
     }
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
