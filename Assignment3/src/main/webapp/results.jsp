@@ -1,5 +1,6 @@
-<!-- <%@ page import = "java.util.*" %> -->
-
+<%@ page import = "travelThruAir.Route" %>
+<%@ page import = "travelThruAir.Flight" %>
+<%@ page import = "java.util.ArrayList" %>
 
 <!DOCTYPE html>
 <html>
@@ -33,7 +34,7 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light static-top">
         <div class="container">
-            <a class="navbar-brand" href="#">Travel Thru Air</a>
+            <a class="navbar-brand" href="/travelThruAir">Travel Thru Air</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
                 aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -41,7 +42,7 @@
             <div class="collapse navbar-collapse">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Admin</a>
+                        <a class="nav-link" href="./admin">Admin</a>
                     </li>
                 </ul>
             </div>
@@ -49,35 +50,36 @@
     </nav>
 
     <!-- Page Content -->
-    <div class="container-fluid container-dark bg-primary" id="searchBody">
-        <div class="row" id="searchRow">
-            <div class="col-3 offset-1">
-                <div class="md-form from-lg">
-                    <input type="text" id="fromInput" class="form-control text-white border-bottom">
-                    <label for="fromInput" id="labelStyle" class="text-white">From</label>
-                    <p class="text-light">Airport Name</p>
-                </div>
-            </div>
-
-            <div class="col-3">
-                <div class="md-form from-lg">
-                    <input type="text" id="fromInput" class="form-control text-white border-bottom">
-                    <label for="fromInput" id="labelStyle" class="text-white">To</label>
-                    <p class="text-light">Airport Name</p>
-                </div>
-            </div>
-
-            <div class="col-2">
-                <div class="md-form from-lg">
-                    <input type="text" id="fromInput" class="form-control text-white border-bottom">
-                    <label for="fromInput" id="labelStyle" class="text-white">Time</label>
-                </div>
-            </div>
-
-            <div class="col-2">
-                <button type="button" class="btn btn-warning">Search</button>
-            </div>
+    <div class="container-fluid container-dark bg-primary" id ="searchBody" >
+    <form action="./search" method="POST">
+      <div class="row" id="searchRow">        
+        <div class="col-3 offset-1">
+          <div class="md-form from-lg">
+            <input name="dep" required type="text" id="fromDep" value="<%=request.getAttribute("dep")%>" class="form-control text-white border-bottom">
+            <label for="fromDep" class="text-white">From</label>              
+            <p class="text-light" id="depName"></p>
+          </div>
         </div>
+        
+        <div class="col-3">
+          <div class="md-form from-lg">
+            <input name="arr" required type="text" value="<%=request.getAttribute("arr")%>" id="fromArr" class="form-control text-white border-bottom">
+            <label for="fromArr" class="text-white">To</label>    
+            <p class="text-light" id="arrName"></p>
+          </div>
+        </div>
+        
+        <div class="col-2">
+          <div class="md-form from-lg">
+            <input name="time" required type="time" id="fromTime" value="<%=request.getAttribute("time")%>" class="form-control text-white border-bottom">
+          </div>
+        </div>
+
+        <div class="col-2">
+          <button type="submit" class="btn btn-warning">Search</button>
+        </div>
+      </div>
+      </form>
     </div>
 
     <div class="container">
@@ -87,90 +89,45 @@
             </div>
         </div>
 
-        <div class="row border rounded py-2 my-3 bg-light">
-            <div class="col-3 h2">G8513</div>
-            <div class="col-6">
-                <div class="row">
-                    <div class="col-5 text-right">
-                        <p class="h3 mb-0">BOM</p>
-                        <small>1030</small>
+        <%
+            ArrayList<Route> result = (ArrayList)request.getAttribute("result");
+            for(Route route : result){
+                %>
+                    <%-- Here HTML for Route(Flight Container)--%>
+                    <div class="row border rounded py-2 my-3 bg-light">            
+                       <%-- Flight info, so nested loop --%>
+                       <%
+                            for(Flight flight : route.getFlights()){
+                                %>
+                                    <%-- Here HTML for Flight --%>                                    
+                                    <div class="col-3 h2"><%=flight.getFlightNumber()%></div>
+                                    <div class="col-6">
+                                        <div class="row">
+                                            <div class="col-5 text-right">
+                                                <p class="h3 mb-0"><%=flight.getDeparture()%></p>
+                                                <small><%=flight.getDepartureTime()%></small>
+                                            </div>
+                                            <div class="col-2 text-center">
+                                                <p class="h3 mb-0" >&#9992;</p>
+                                                <small><%=flight.getDuration(0)%></small>
+                                            </div>
+                                            <div class="col-5">
+                                                <p class="h3 mb-0"><%=flight.getArrival()%></p>
+                                                <small><%=flight.getArrivalTime()%></small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-3 text-right">
+                                        <p class="mb-0 h2">&#8377;<%=flight.getPrice()%></p>
+                                    </div>
+                                <%
+                            }
+                       %>
                     </div>
-                    <div class="col-2 text-center">
-                        <p class="h3" >✈</p>
-                    </div>
-                    <div class="col-5">
-                        <p class="h3 mb-0">CCU</p>
-                        <small>1230</small>
-                    </div>
-                </div>
-            </div>
-            <div class="col-3 text-right">
-                <p class="mb-0 h2">&#8377;200</p>
-            </div>
+                <%
+            }
+        %>
         </div>
-
-        <div class="row border rounded py-2 my-3 bg-light">
-            <div class="col-3 h2">G8513</div>
-            <div class="col-6">
-                <div class="row">
-                    <div class="col-5 text-right">
-                        <p class="h3 mb-0">BOM</p>
-                        <small>1030</small>
-                    </div>
-                    <div class="col-2 text-center">
-                        <p class="h3" >✈</p>
-                    </div>
-                    <div class="col-5">
-                        <p class="h3 mb-0">CCU</p>
-                        <small>1230</small>
-                    </div>
-                </div>
-            </div>
-            <div class="col-3 text-right">
-                <p class="mb-0 h2">&#8377;200</p>
-            </div>
-            <div class="col-3 h2">G8513</div>
-            <div class="col-6">
-                <div class="row">
-                    <div class="col-5 text-right">
-                        <p class="h3 mb-0">BOM</p>
-                        <small>1030</small>
-                    </div>
-                    <div class="col-2 text-center">
-                        <p class="h3" >✈</p>
-                    </div>
-                    <div class="col-5">
-                        <p class="h3 mb-0">CCU</p>
-                        <small>1230</small>
-                    </div>
-                </div>
-            </div>
-            <div class="col-3 text-right">
-                <p class="mb-0 h2">&#8377;200</p>
-            </div>
-            <div class="col-3 h2">G8513</div>
-            <div class="col-6">
-                <div class="row">
-                    <div class="col-5 text-right">
-                        <p class="h3 mb-0">BOM</p>
-                        <small>1030</small>
-                    </div>
-                    <div class="col-2 text-center">
-                        <p class="h3" >✈</p>
-                    </div>
-                    <div class="col-5">
-                        <p class="h3 mb-0">CCU</p>
-                        <small>1230</small>
-                    </div>
-                </div>
-            </div>
-            <div class="col-3 text-right">
-                <p class="mb-0 h2">&#8377;200</p>
-            </div>
-
-        </div>
-
-
     </div>
 
     <!-- Including Bootstrap JS (with its jQuery dependency) so that dynamic components work -->

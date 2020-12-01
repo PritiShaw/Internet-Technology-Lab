@@ -38,7 +38,7 @@
   <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light static-top">
       <div class="container">
-        <a class="navbar-brand">Travel Thru Air</a>
+        <a class="navbar-brand" href="/travelThruAir">Travel Thru Air</a>
         <button
           class="navbar-toggler"
           type="button"
@@ -62,7 +62,7 @@
 
     <!-- Page Content -->
     <div class="container-fluid container-dark bg-primary" id ="searchBody" >
-    <form action="./search"/>
+    <form action="./search">
       <div class="row" id="searchRow">        
         <div class="col-3 offset-1">
           <div class="md-form from-lg">

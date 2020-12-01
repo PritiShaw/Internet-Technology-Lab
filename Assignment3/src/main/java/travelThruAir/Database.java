@@ -16,7 +16,7 @@ public class Database{
             Statement stmt=con.createStatement();  
             int now = LocalDateTime.now().getHour()*100 + LocalDateTime.now().getMinute();
             String sql_stmt = "select * from deals where expiry>"+ Integer.toString(now);
-            System.out.println(sql_stmt);
+
             ResultSet rs=stmt.executeQuery(sql_stmt);  
             ArrayList<Deals> results = new ArrayList<>();
             while(rs.next())  
@@ -45,5 +45,31 @@ public class Database{
         catch(Exception e){
             System.out.println(e);
         }               
+    }
+
+    public static ArrayList<Flight> getAllFlights(){
+        try{  
+            Class.forName("com.mysql.jdbc.Driver");  
+            Connection con=DriverManager.getConnection(connection_url,username,password);  
+            Statement stmt=con.createStatement();  
+            String sql_stmt = "SELECT * FROM `flights`";
+            ResultSet rs=stmt.executeQuery(sql_stmt);  
+            ArrayList<Flight> results = new ArrayList<>();
+            while(rs.next())
+                results.add(new Flight(
+                    rs.getString(1), // Flight Number
+                    rs.getString(2), // Departure
+                    rs.getString(4),  // Arrival
+                    rs.getInt(3) , // Takeoff
+                    rs.getInt(5) // Landing
+                ));            
+                
+            con.close();  
+            return results;
+        }
+        catch(Exception e){
+            System.out.println(e);
+        }               
+        return null;    
     }
 }

@@ -1,15 +1,15 @@
 package travelThruAir;
 
-import java.util.LinkedList;
+import java.util.ArrayList;
 
 public class Route {
    int cost;
    int start;
    int end;
    int flyingTime;
-   LinkedList<Flight> flights;
+   ArrayList<Flight> flights;
 
-   public Route(LinkedList<Flight> flights) {
+   public Route(ArrayList<Flight> flights) {
       int cost = 0;
       int start = -1;
       int end = 0;
@@ -41,7 +41,7 @@ public class Route {
       return end - start;
    }
 
-   public LinkedList<Flight> getFlights() {
+   public ArrayList<Flight> getFlights() {
       return flights;
    }
 

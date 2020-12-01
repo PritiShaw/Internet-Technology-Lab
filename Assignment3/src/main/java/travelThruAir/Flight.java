@@ -1,4 +1,5 @@
 package travelThruAir;
+import java.util.Random; 
 
 public class Flight{
     String flightNumber;
@@ -9,18 +10,34 @@ public class Flight{
     int price;
     int totalCost;
 
-    public Flight(String flightNumber, String departure, String arrival, int departureTime, int arrivalTime, int price){
+    public Flight(String flightNumber, String departure, String arrival, int departureTime, int arrivalTime){
         this.flightNumber=flightNumber;
         this.departure=departure;
         this.arrival=arrival;
         this.departureTime=departureTime;   
         this.arrivalTime=arrivalTime;
-        this.price=price;
-        this.totalCost=-1;
+        
+        int duration = getDuration(); 
+        Random rand = new Random();   
+
+        int rand_int = rand.nextInt(5) + 5; 
+        this.price = duration * rand_int;
+        while(this.price < 1000)
+            this.price *= rand_int;
+
+        this.totalCost=this.price;
     }
 
     public String getFlightNumber(){
         return this.flightNumber;
+    }
+
+    public String getArrival(){
+        return arrival;
+    }
+
+    public String getDeparture(){
+        return departure;
     }
     
     public int getDuration(){
@@ -28,8 +45,8 @@ public class Flight{
         int departureTimeHr = departureTime/100;
         int arrivalTimeMin = arrivalTime%100;
         int arrivalTimeHr = arrivalTime/100;
-        int hrDiff = departureTimeHr - arrivalTimeHr;
-        int minDiff = departureTimeMin - arrivalTimeMin;
+        int hrDiff = arrivalTimeHr - departureTimeHr;
+        int minDiff = arrivalTimeMin - departureTimeMin;
       
         if(minDiff<0){
             minDiff += 60;
