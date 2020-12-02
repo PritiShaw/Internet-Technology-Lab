@@ -61,9 +61,10 @@ public class SearchServlet extends HttpServlet {
             return;
         }
         for (Flight flight : airport_flights.get(src)) {
-            if (flight.departureTime < time)
-                continue;
             String next_airport = flight.arrival;
+            if (flight.departureTime < time || AirportDetailsServlet.airports.get(src).closerTo(dest, next_airport))
+                continue;
+
             if (!path.contains(next_airport)) {
                 ArrayList<Flight> flights_copy = new ArrayList<Flight>(flights);
                 flights_copy.add(flight);

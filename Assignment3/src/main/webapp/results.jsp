@@ -100,6 +100,16 @@
 
         <%
             ArrayList<Route> result = (ArrayList)request.getAttribute("result");
+            
+            if(request.getAttribute("dep").equals(request.getAttribute("arr"))){%>
+                <p class="lead text-danger text-center">
+                    Departure and Arrival cannot be same
+                </p>
+            <%}
+            else{%>
+                <p class="lead"><%=result.size()>0?result.size():"No"%> Flights found</p>
+            <%}
+
             for(Route route : result){
                 %>
                     <%-- Here HTML for Route(Flight Container)--%>

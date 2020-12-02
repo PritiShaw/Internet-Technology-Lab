@@ -1,8 +1,6 @@
 package travelThruAir;
 import java.util.Random;
 
-import javax.xml.crypto.Data; 
-
 public class Flight{
     String flightNumber;
     String departure;

@@ -106,7 +106,6 @@ public class Database{
             Statement stmt=con.createStatement();  
             String sql_stmt = "SELECT discount FROM `deals` where departure= '" + dep + "' and arrival='" + arr + "' and expiry>" + Integer.toString(time) + " ORDER by discount DESC limit 1";
             ResultSet rs=stmt.executeQuery(sql_stmt);  
-            System.out.println(sql_stmt);
             int cost = -1;
             while(rs.next())
                 cost = rs.getInt(1);                                           

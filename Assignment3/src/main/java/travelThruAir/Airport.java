@@ -13,10 +13,12 @@ public class Airport {
         this.longitude = Math.toRadians(longitude);
     }
 
-    public Boolean closerTo(Airport a1, Airport a2){
+    public Boolean closerTo(String code1,String code2){
+        Airport a1 = AirportDetailsServlet.airports.get(code1);        
         double dlon1 = a1.longitude - longitude;
         double dlat1 = a1.latitude - latitude;
 
+        Airport a2 = AirportDetailsServlet.airports.get(code2);
         double dlon2 = a2.longitude - longitude;
         double dlat2 = a2.latitude - latitude;
 
@@ -31,6 +33,6 @@ public class Airport {
         double dist1 = Math.asin(Math.sqrt(cal1));
         double dist2 = Math.asin(Math.sqrt(cal2));
 
-        return (dist1<=dist2);                
+        return !(dist1 <= dist2);
     }
 }
