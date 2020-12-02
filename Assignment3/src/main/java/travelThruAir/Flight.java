@@ -1,5 +1,7 @@
 package travelThruAir;
-import java.util.Random; 
+import java.util.Random;
+
+import javax.xml.crypto.Data; 
 
 public class Flight{
     String flightNumber;
@@ -9,6 +11,7 @@ public class Flight{
     int arrivalTime;
     int price;
     int totalCost;
+    boolean isDiscounted = false;
 
     public Flight(String flightNumber, String departure, String arrival, int departureTime, int arrivalTime){
         this.flightNumber=flightNumber;
@@ -76,9 +79,20 @@ public class Flight{
         return this.arrivalTime;
     }
     public int getPrice(){
-        return this.price;
+        int discounted_rate = Database.getDealDiscount(departure, arrival, departureTime);
+        int cost = this.totalCost;
+        if (discounted_rate > 0 && discounted_rate < cost){
+            cost = discounted_rate;
+            isDiscounted = true;
+        }
+        else
+            isDiscounted = false;
+        return cost;
     }
     public int getTotalCost(){
         return this.totalCost;
+    }
+    public Boolean isDiscounted(){
+        return isDiscounted;
     }
 }

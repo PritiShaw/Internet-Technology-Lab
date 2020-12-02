@@ -28,6 +28,15 @@
         .w-33 {
             width: 33% !important;
         }
+        .deal {
+            animation: blinker 1s linear infinite;
+        }
+
+        @keyframes blinker {
+            50% {
+                opacity: 0;
+            }
+        }
     </style>
 </head>
 
@@ -118,7 +127,7 @@
                                         </div>
                                     </div>
                                     <div class="col-3 text-right">
-                                        <p class="mb-0 h2">&#8377;<%=flight.getPrice()%></p>
+                                        <p class="mb-0 h2 <%=flight.isDiscounted()?"deal":""%>">&#8377;<%=flight.getPrice()%></p>
                                     </div>
                                 <%
                             }
