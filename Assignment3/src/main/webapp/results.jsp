@@ -55,7 +55,7 @@
       <div class="row" id="searchRow">        
         <div class="col-3 offset-1">
           <div class="md-form from-lg">
-            <input name="dep" required type="text" id="fromDep" value="<%=request.getAttribute("dep")%>" class="form-control text-white border-bottom">
+            <input name="dep" onkeyup="airportName('fromDep','depName')" required type="text" id="fromDep" value="<%=request.getAttribute("dep")%>" class="form-control text-white border-bottom">
             <label for="fromDep" class="text-white">From</label>              
             <p class="text-light" id="depName"></p>
           </div>
@@ -63,7 +63,7 @@
         
         <div class="col-3">
           <div class="md-form from-lg">
-            <input name="arr" required type="text" value="<%=request.getAttribute("arr")%>" id="fromArr" class="form-control text-white border-bottom">
+            <input name="arr" onkeyup="airportName('fromArr','arrName')" required type="text" value="<%=request.getAttribute("arr")%>" id="fromArr" class="form-control text-white border-bottom">
             <label for="fromArr" class="text-white">To</label>    
             <p class="text-light" id="arrName"></p>
           </div>
@@ -95,7 +95,7 @@
                 %>
                     <%-- Here HTML for Route(Flight Container)--%>
                     <div class="row border rounded py-2 my-3 bg-light">            
-                       <%-- Flight info, so nested loop --%>
+                       <%-- Flight in nested loop --%>
                        <%
                             for(Flight flight : route.getFlights()){
                                 %>
@@ -135,6 +135,11 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <script type="text/javascript"
         src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.4.1/js/mdb.min.js"></script>
+    <script src="/travelThruAir/script.js"></script>
+    <script>
+      airportName('fromDep','depName');
+      airportName('fromArr','arrName');
+    </script>
 </body>
 
 </html>

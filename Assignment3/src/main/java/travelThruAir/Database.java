@@ -1,8 +1,9 @@
 package travelThruAir;
 
-import java.sql.*;  
+import java.sql.*;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Database{
     private static String username = "root";
@@ -62,6 +63,31 @@ public class Database{
                     rs.getString(4),  // Arrival
                     rs.getInt(3) , // Takeoff
                     rs.getInt(5) // Landing
+                ));            
+                
+            con.close();  
+            return results;
+        }
+        catch(Exception e){
+            System.out.println(e);
+        }               
+        return null;    
+    }
+
+    public static HashMap<String,Airport> getAirportDetails(){
+        try{  
+            Class.forName("com.mysql.jdbc.Driver");  
+            Connection con=DriverManager.getConnection(connection_url,username,password);  
+            Statement stmt=con.createStatement();  
+            String sql_stmt = "SELECT * FROM `airports`";
+            ResultSet rs=stmt.executeQuery(sql_stmt);  
+            HashMap<String,Airport> results = new HashMap<>();
+            while(rs.next())
+                results.put(rs.getString(1), new Airport(                    
+                    rs.getString(1),
+                    rs.getString(2),
+                    rs.getDouble(3),
+                    rs.getDouble(4)
                 ));            
                 
             con.close();  

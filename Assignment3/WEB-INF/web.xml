@@ -41,4 +41,14 @@
         <url-pattern>/search</url-pattern>
     </servlet-mapping>
 
+        <servlet>
+        <servlet-name>AiportDetails</servlet-name>
+        <servlet-class>travelThruAir.AirportDetailsServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>AiportDetails</servlet-name>
+        <url-pattern>/airport</url-pattern>
+    </servlet-mapping>
+
 </web-app>

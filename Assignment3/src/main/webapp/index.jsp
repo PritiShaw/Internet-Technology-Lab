@@ -66,7 +66,7 @@
       <div class="row" id="searchRow">        
         <div class="col-3 offset-1">
           <div class="md-form from-lg">
-            <input name="dep" required type="text" id="fromDep" class="form-control text-white border-bottom">
+            <input name="dep" onkeyup="airportName('fromDep','depName')" required type="text" id="fromDep" class="form-control text-white border-bottom">
             <label for="fromDep" class="text-white">From</label>              
             <p class="text-light" id="depName"></p>
           </div>
@@ -74,7 +74,7 @@
         
         <div class="col-3">
           <div class="md-form from-lg">
-            <input name="arr" required type="text" id="fromArr" class="form-control text-white border-bottom">
+            <input name="arr"  onkeyup="airportName('fromArr','arrName')" required type="text" id="fromArr" class="form-control text-white border-bottom">
             <label for="fromArr" class="text-white">To</label>    
             <p class="text-light" id="arrName"></p>
           </div>
@@ -122,5 +122,6 @@
     <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.4.1/js/mdb.min.js"></script>
+    <script src="/travelThruAir/script.js"></script>
   </body>
 </html>
