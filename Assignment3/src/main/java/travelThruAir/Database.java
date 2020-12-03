@@ -37,7 +37,6 @@ public class Database{
             Connection con=DriverManager.getConnection(connection_url,username,password);  
             Statement stmt=con.createStatement();  
             String sql_query = "INSERT INTO `deals` (`departure`, `arrival`, `discount`, `expiry`, `description`) VALUES ('" + depart + "', '" + arrival + "', '" + Integer.toString(price) + "', '" + Integer.toString(expiryTime) + "', '');";
-            System.out.println(sql_query);
             stmt.executeUpdate(sql_query);  
             
             con.close();  
@@ -104,7 +103,7 @@ public class Database{
             Class.forName("com.mysql.jdbc.Driver");  
             Connection con=DriverManager.getConnection(connection_url,username,password);  
             Statement stmt=con.createStatement();  
-            String sql_stmt = "SELECT discount FROM `deals` where departure= '" + dep + "' and arrival='" + arr + "' and expiry>" + Integer.toString(time) + " ORDER by discount DESC limit 1";
+            String sql_stmt = "SELECT discount FROM `deals` where departure= '" + dep + "' and arrival='" + arr + "' and expiry>" + Integer.toString(time) + " ORDER by discount limit 1";
             ResultSet rs=stmt.executeQuery(sql_stmt);  
             int cost = -1;
             while(rs.next())
