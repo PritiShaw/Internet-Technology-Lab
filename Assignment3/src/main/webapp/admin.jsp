@@ -29,13 +29,13 @@
                 <div class="form-row " >
                     <div class="col">
                         <div class="md-form">
-                            <input class="form-control" name="departure" type="text" id="adminDeparture" list="airport_codes"  autocomplete="off"/>
+                            <input autocomplete=off  class="form-control" name="departure" type="text" id="adminDeparture" list="airport_codes"  autocomplete="off"/>
                             <label for="fromInput" id="adminDeparture">Departure</label>
                         </div>
                     </div>
                     <div class="col">
                         <div class="md-form">
-                            <input class="form-control" name = "arrival" type="text" id="arrivalDeparture" list="airport_codes"  autocomplete="off"/>
+                            <input autocomplete=off  class="form-control" name = "arrival" type="text" id="arrivalDeparture" list="airport_codes"  autocomplete="off"/>
                             <label for="fromInput" id="arrivalDeparture">Arrival</label>
                         </div>
                     </div>
@@ -43,13 +43,13 @@
                 <div class="form-row mt-2">
                     <div class="col">
                         <div class="md-form">
-                            <input class="form-control" type="number" id="discount" required name="cost">
+                            <input autocomplete=off  class="form-control" type="number" id="discount" required name="cost">
                             <label for="discount">Discounted Price</label>
                         </div>
                     </div>
                     <div class="col">
                         <div class="md-form">
-                            <input class="form-control" id="exp" type="time" required name="expiry">
+                            <input autocomplete=off  class="form-control" id="exp" type="time" required name="expiry">
                             <label class="active" for="expiry">Valid till</label>
                         </div>
                     </div>
@@ -57,7 +57,7 @@
                 <div class="form-row mt-2">
                     <div class="col">
                         <div class="md-form">
-                            <input class="form-control" type="password" id="password" required name="password">
+                            <input autocomplete=off  class="form-control" type="password" id="password" required name="password">
                             <label for="password">Password</label>
                         </div>
                     </div>

@@ -11,7 +11,7 @@ import javax.servlet.http.*;
 public class AirportDetailsServlet extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
-    public static HashMap<String,Airport> airports;
+    public static HashMap<String, Airport> airports;
 
     public void init() throws ServletException {
         // Do required initialization
@@ -30,7 +30,15 @@ public class AirportDetailsServlet extends HttpServlet {
     }
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        doPost(request, response);
+        response.setContentType("text/plain");
+        request.setCharacterEncoding("UTF-8");
+        airports.forEach((k, v) -> {
+            try {
+                response.getWriter().println(k + "\t" + v);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
     }
 
     public void destroy() {

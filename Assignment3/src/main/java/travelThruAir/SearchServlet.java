@@ -62,13 +62,13 @@ public class SearchServlet extends HttpServlet {
         }
         for (Flight flight : airport_flights.get(src)) {
             String next_airport = flight.arrival;
-            if (flight.departureTime < time || AirportDetailsServlet.airports.get(src).closerTo(dest, next_airport))
+            if (flight.departureTime < (time + 30) || AirportDetailsServlet.airports.get(dest).closerTo(src, next_airport))
                 continue;
 
             if (!path.contains(next_airport)) {
                 ArrayList<Flight> flights_copy = new ArrayList<Flight>(flights);
                 flights_copy.add(flight);
-                getRoutes(next_airport, dest, flight.arrivalTime + 30, cost + flight.getPrice(), path + src + "|",
+                getRoutes(next_airport, dest, flight.arrivalTime, cost + flight.getPrice(), path + src + "|",
                         flights_copy, routes);
             }
         }
