@@ -21,7 +21,19 @@ public class SearchServlet extends HttpServlet {
             LinkedList<Product> result = new LinkedList<>();
             if(query!=null && query.length()>0){
                 Statement stmt = conn.createStatement();
-                String sql = "SELECT * FROM products WHERE LOWER(name) LIKE '%" + query.toLowerCase() + "%'";
+                String condition = "";
+                for(String query_token : query.toLowerCase().split("\\s+")){
+                    condition += " LOWER(name) LIKE '%" + query_token + "%' AND ";
+                }
+                condition += " 1=1";
+                String sql =  "SELECT P.product_id,discount_id, name, gender, cost, discount, added_on, img_url FROM `products` P "
+                            + "LEFT JOIN ("
+                            + "SELECT id as discount_id, product_id, MAX(discount) as discount, expiry from discount "
+                            + "GROUP BY product_id "
+                            + "HAVING (expiry is NULL OR expiry >= CURRENT_DATE())"
+                            + ") D ON D.product_id = P.product_id "
+                            + "WHERE " + condition;
+
                 ResultSet rs = stmt.executeQuery(sql);
                 while (rs.next()) 
                     result.add(new Product(
@@ -31,7 +43,8 @@ public class SearchServlet extends HttpServlet {
                         rs.getInt("cost"),
                         rs.getInt("discount"),
                         rs.getDate("added_on"),
-                        rs.getString("image_url")
+                        rs.getString("img_url"),
+                        rs.getInt("discount_id")
                     ));
             }
             request.setAttribute("search_result", result);

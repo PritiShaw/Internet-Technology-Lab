@@ -25,21 +25,26 @@ public class HomeServlet extends HttpServlet {
         LinkedList<Product> apparels = new LinkedList<>();
         String gender = (String) session.getAttribute("gender");
         String preference = (String) session.getAttribute("preference");
-        String condition = "";
+        String condition = "GENDER = '" + gender + "'";
         if(preference.equals("D"))
-            condition = "and discount>0";
+            condition += " and discount>0";
         else{
             Date today = new Date();
             SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
-            condition = "and added_on>'" + df.format(new Date(today.getTime() - 604800000)) + "'";
+            condition += " and added_on>'" + df.format(new Date(today.getTime() - 604800000)) + "'";
         }
-        String sql = "SELECT * FROM products WHERE gender='" + gender
-                + "' " + condition + " ORDER BY rand()";
-        
+        String sql =  "SELECT P.product_id, D.discount_id, name, gender, cost, discount, added_on, img_url FROM `products` P "
+                    + "LEFT JOIN ("
+                    + "SELECT id as discount_id, product_id, MAX(discount) as discount, expiry from discount "
+                    + "GROUP BY product_id "
+                    + "HAVING (expiry is NULL OR expiry >= CURRENT_DATE())"
+                    + ") D ON D.product_id = P.product_id "
+                    + "WHERE " + condition
+                    + " ORDER BY RAND()";                    
         ResultSet rs = stmt.executeQuery(sql);
         while (rs.next())
             apparels.add(new Product(rs.getInt("product_id"), rs.getString("name"), rs.getString("gender"),
-                    rs.getInt("cost"), rs.getInt("discount"), rs.getDate("added_on"), rs.getString("image_url")));
+                    rs.getInt("cost"), rs.getInt("discount"), rs.getDate("added_on"), rs.getString("img_url"), rs.getInt("discount_id")));
         return apparels;
     }
 
@@ -57,6 +62,6 @@ public class HomeServlet extends HttpServlet {
         }
         
         request.setCharacterEncoding("UTF-8");
-        request.getRequestDispatcher("/index.jsp").forward(request, response);
+        request.getRequestDispatcher("/home.jsp").forward(request, response);
     }
 }

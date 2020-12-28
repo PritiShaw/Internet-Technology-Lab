@@ -36,11 +36,7 @@
                         <input type="search" class="form-control" name="query" placeholder="Search" aria-label="Search"/>
                         <button class="btn btn-outline-white" type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
                     </form>
-                    <div class="d-flex flex-row-reverse ">
-                        <div style="padding:10px"><a href="/profile.jsp"><i class="fa fa-user" aria-hidden="true"></i></a></div>
-                        <div style="padding:10px"><a href="/auth/signout"><i class="fas fa-sign-out-alt" aria-hidden="true"></i></a></div>
-                        <div style="padding:10px"><a href="/"><h4 class="brand">Apparel Store</h4></a></div>
-                    </div>
+                    <jsp:include page="./navmenu.jsp"/>
                 </div>
             </nav>
             <div class="row text-center pt-5 mt-5">
@@ -57,7 +53,7 @@
                      </tr>      
                      <tr>
                          <th>Gender</th>
-                         <td><%=session.getAttribute("gender")%></td>
+                         <td><%=session.getAttribute("gender").equals("M")?"Male":"Female"%></td>
                      </tr>      
                      <tr>
                          <th>Preference</th>

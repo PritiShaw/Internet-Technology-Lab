@@ -14,6 +14,7 @@
         <script type="text/javascript" src="https://bootswatch.com/_vendor/jquery/dist/jquery.min.js"></script>
         <script type="text/javascript" src="https://bootswatch.com/_vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"/>
+        <link rel="stylesheet" href="/style.css"/>
         <style>
             body{
                 background-image: url(https://previews.123rf.com/images/layritten/layritten1508/layritten150800013/43412570-seamless-pattern-of-colorful-clothes-for-stylish-design-transparent-pattern-background-of-clothing-s.jpg);
@@ -32,11 +33,7 @@
                         <input type="search" class="form-control" name="query" placeholder="Search" aria-label="Search"/>
                         <button class="btn btn-outline-white" type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
                     </form>
-                    <div class="d-flex flex-row-reverse ">
-                        <div style="padding:10px"><a href="/profile.jsp"><i class="fa fa-user" aria-hidden="true"></i></a></div>
-                        <div style="padding:10px"><a href="/auth/signout"><i class="fas fa-sign-out-alt" aria-hidden="true"></i></a></div>
-                        <div style="padding:10px"><a href="/"><h4 class="brand">Apparel Store</h4></a></div>
-                    </div>
+                    <jsp:include page="./navmenu.jsp"/>
                 </div>
             </nav>
 
@@ -53,15 +50,29 @@
                         %>
                     
                         <!-- This block will repeat -->
-                            <div class="card w-25 my-2 mx-3">
-                                <img class="card-img-top pt-3" src="<%=p.getImage_url()%>">
-                                <div class="card-body text-center">
-                                    <p class="card-title h2 mb-0"><%=p.getName()%></p>    
+                            <div class="card w-25 my-2 mx-3">                                
+                                <div class="position-absolute">                        
                                     <%if(p.isDiscounted()){%>
                                         <span class="badge badge-danger">Discounted</span>
                                     <%}%>
-                                    <p class="mb-0 lead text-center">&#8377;<%=p.getSellingPrice()%></p>                                
+                                    <%if(p.isNew()){%>
+                                        <span class="badge badge-warning">Fresh Arrivals</span>
+                                    <%}%>
                                 </div>
+                                <img class="card-img-top pt-3" src="<%=p.getImage_url()%>">
+                                <div class="card-body text-center">
+                                    <p class="card-title h2 mb-0"><%=p.getName()%></p>    
+                                    <%
+                                        if(p.isDiscounted()){
+                                            %><p class="mb-0 text-muted text-center" style="text-decoration:line-through"><%=p.getCost()%></p><%
+                                        }
+                                        else{
+                                            %><p class="mb-0 text-muted text-center invisible"><%=p.getCost()%></p><%
+                                        }
+                                    %>                                    
+                                    <p class="mb-0 lead text-center">&#8377;<%=p.getSellingPrice()%></p>
+                                </div>
+                                <button class="btn-block btn-primary" onclick="addToCart(this,'<%=p.getProduct_id()%>',<%=p.getDeal_id()%>)">Add to Cart</button>
                             </div>
                         <!--  -->
 

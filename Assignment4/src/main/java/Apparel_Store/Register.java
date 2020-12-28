@@ -25,10 +25,7 @@ public class Register extends HttpServlet {
             String gender = request.getParameter("gender");
             String preference = request.getParameter("preference");
             String password = request.getParameter("password");
-            Integer hashcode = 7;
-            for (int i = 0; i < password.length() ; i++) {
-                hashcode = hashcode*31 + password.charAt(i);
-            }
+            Integer hashcode = password.hashCode();            
             Statement stmt;
             try {
                 stmt = conn.createStatement();

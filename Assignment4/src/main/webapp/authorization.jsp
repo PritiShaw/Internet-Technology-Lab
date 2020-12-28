@@ -39,12 +39,12 @@
                 <div class="row">
                     <div class="col-md-6 login-form-1" style="background-color: rgb(255,255,255,.4);">
                         <h3 style="font-weight: bolder;">Login</h3>
-                        <form method="POST" action="/auth/signin">
+                        <form method="POST" action="/auth/signin" autocomplete="off">
                             <div class="form-group">
-                                <input type="email" name="email" class="form-control" placeholder="Your Email *" required value="" />
+                                <input type="email" autocomplete=off name="email" class="form-control" placeholder="Your Email *" required value="" />
                             </div>
                             <div class="form-group">
-                                <input type="password" name="password" class="form-control" placeholder="Your Password *" required value="" />
+                                <input type="password" autocomplete=off name="password" class="form-control" placeholder="Your Password *" required value="" />
                             </div>
                             <div class="form-group">
                                 <button class="btn btn-dark" type="submit">Login</button>
@@ -54,18 +54,18 @@
                     </div>
                     <div class="col-md-6 login-form-2 border-left"  style="background-color: rgb(255,255,255,.4);">
                         <h3 style="font-weight: bolder;">Register</h3>
-                        <form method="POST" action="/auth/register">
+                        <form method="POST" action="/auth/register" autocomplete="off">
                             <div class="form-group">
-                                <input type="text" name="name" required class="form-control" placeholder="Your Name *" value="" />
+                                <input type="text" autocomplete=off name="name" required class="form-control" placeholder="Your Name *" value="" />
                             </div>
                             <div class="form-group">
-                                <input type="text" name="email"  required class="form-control" placeholder="Your Email *" value="" />
+                                <input type="text" autocomplete=off name="email"  required class="form-control" placeholder="Your Email *" value="" />
                             </div>
                             <div class="form-group">
                                 <label style="font-weight: bolder;">Gender</label>
                                 <select class="form-control" name = "gender" aria-labelledby="dropdownMenuButton" required>
-                                    <option>Female</option>
-                                    <option>Male</option>                                    
+                                    <option value="F">Female</option>
+                                    <option value="M">Male</option>                                    
                                 </select>
                             </div>
                             <div class="form-group">
@@ -76,7 +76,7 @@
                                 </select>
                             </div>
                             <div class="form-group">
-                                <input type="password" name="password" required class="form-control" placeholder="Your Password *" value="" />
+                                <input type="password" autocomplete=off name="password" required class="form-control" placeholder="Your Password *" value="" />
                             </div>
                             <div class="form-group">
                                 <button class="btn btn-dark" type="submit">Register</button>
