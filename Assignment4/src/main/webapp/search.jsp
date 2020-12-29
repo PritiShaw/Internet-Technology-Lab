@@ -30,7 +30,7 @@
             <nav class="navbar mt-3 navbar-dark bg-light">
                 <div class="container-fluid">
                     <form class="d-flex input-group w-50" action="/search">
-                        <input type="search" class="form-control" name="query" placeholder="Search" aria-label="Search"/>
+                        <input value="<%=request.getParameter("query")==null?"":request.getParameter("query")%>" type="search" class="form-control" name="query" placeholder="Search" aria-label="Search"/>
                         <button class="btn btn-outline-white" type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
                     </form>
                     <jsp:include page="./navmenu.jsp"/>
