@@ -70,6 +70,15 @@ public class CartServlet extends HttpServlet {
                                 + deal_id
                                 + ") ON DUPLICATE KEY UPDATE qty = qty + 1";
                 stmt.executeUpdate(sql);
+                
+                request.getSession().setAttribute("tracker", 
+                    (int)request.getSession().getAttribute("tracker") + (deal_id==null?-1:1));                
+                // If add to cart is discounted then increment tracker else decrement
+
+                if((int)request.getSession().getAttribute("tracker")<0)
+                    request.getSession().setAttribute("preference", "N");                     
+                else
+                    request.getSession().setAttribute("preference", "D");      
                 writer.print("200");
             }
             else{

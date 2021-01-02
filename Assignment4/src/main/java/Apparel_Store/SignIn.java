@@ -43,6 +43,7 @@ public class SignIn extends HttpServlet {
                     session.setAttribute("email", username);
                     session.setAttribute("gender", gender);
                     session.setAttribute("preference", preference);
+                    session.setAttribute("tracker", preference.equals("D")?5:-5);
                     response.sendRedirect("");
                 }
                 else{                    

@@ -35,7 +35,8 @@ public class Register extends HttpServlet {
                 session.setAttribute("name", name);
                 session.setAttribute("email", username);
                 session.setAttribute("gender", gender);
-                session.setAttribute("preference", preference);         
+                session.setAttribute("preference", preference);     
+                session.setAttribute("tracker", preference.equals("D")?5:-5);    
                 response.sendRedirect("");                
             } 
             catch (SQLException e) {
