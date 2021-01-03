@@ -37,6 +37,17 @@ public class Register extends HttpServlet {
                 session.setAttribute("gender", gender);
                 session.setAttribute("preference", preference);     
                 session.setAttribute("tracker", preference.equals("D")?5:-5);    
+                
+                Cookie username_cookie = new Cookie("user_name", name);            
+                username_cookie.setMaxAge(60*60*24);  // 24 hours
+                username_cookie.setPath("/authorization.jsp");
+                response.addCookie( username_cookie );
+
+                Cookie useremail_cookie = new Cookie("user_email", username);
+                useremail_cookie.setMaxAge(60*60*24); 
+                useremail_cookie.setPath("/authorization.jsp");
+                response.addCookie( useremail_cookie );
+
                 response.sendRedirect("");                
             } 
             catch (SQLException e) {

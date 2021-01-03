@@ -49,7 +49,7 @@ public class SearchServlet extends HttpServlet {
             }
             request.setAttribute("search_result", result);
             request.setCharacterEncoding("UTF-8");
-            request.getRequestDispatcher("/search.jsp").forward(request, response);
+            request.getRequestDispatcher("/WEB-INF/search.jsp").forward(request, response);
         } catch (SQLException e) {
             e.printStackTrace();
         }

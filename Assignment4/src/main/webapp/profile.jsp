@@ -36,7 +36,7 @@
                         <input type="search" class="form-control" name="query" placeholder="Search" aria-label="Search"/>
                         <button class="btn btn-outline-white" type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
                     </form>
-                    <jsp:include page="./navmenu.jsp"/>
+                    <jsp:include page="./WEB-INF/navmenu.jsp"/>
                 </div>
             </nav>
             <div class="row text-center pt-5 mt-5">

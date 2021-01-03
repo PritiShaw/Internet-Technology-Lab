@@ -45,6 +45,7 @@
                     <div class="col-12">
                         <table class="table">
                         <tr>
+                            <th></th>
                             <th colspan="2">Name</th>
                             <th>Qty</th>
                             <th class="text-right">Price</th>
@@ -57,12 +58,8 @@
                         %>
                         <!-- This block will repeat -->
                             <tr>
-                                <td><%=p.getName()%></td>
-                                <td>
-                                    <%-- <%if(p.isDiscounted()){%>
-                                        <span class="badge badge-danger">Discounted</span>
-                                    <%}%>                                     --%>
-                                </td>
+                                <td style="cursor:pointer" onclick="removeFromCart('<%=p.getProduct_id()%>')">X</td>
+                                <td colspan=2><%=p.getName()%></td>
                                 <td>
                                     <%=p.getQty()%> x <%=p.isDiscounted()?"<s>" + p.getCost() + "</s>":"&#8377; "%> <%=p.getSellingPrice()%>
                                 </td>
@@ -72,10 +69,10 @@
                             </tr>                            
                         <!--  -->
                         <%}
-                            %><tr><th colspan=4 class="text-right lead">Total: &#8377; <%=total%></th></tr><%
+                            %><tr><th colspan=5 class="text-right lead">Total: &#8377; <%=total%></th></tr><%
                         }
                         else{%>
-                        <tr><th colspan=4 class="text-center">Your Cart is empty</th></tr>
+                        <tr><th colspan=5 class="text-center">Your Cart is empty</th></tr>
                         <%}%>            
                         </table>
                     </div>

@@ -15,7 +15,7 @@
 </style>
 <script>
     function sleep (time) {
-    return new Promise((resolve) => setTimeout(resolve, time));
+        return new Promise((resolve) => setTimeout(resolve, time));
     }
     function addToCart(d,e,dcis) {
         d.disabled = true
@@ -38,6 +38,22 @@
                 d.innerText = "Add to Cart";d.className = "btn-primary"
                 d.disabled = false
             })        
+        });        
+    }
+
+    function removeFromCart(pid) {
+        fetch('/cart?pid=' + pid, {
+            method: 'delete'
+        }).then(function(response) {
+            return response.text();
+        }).then((res)=>{
+            if (res=="200"){
+                location.reload();
+            }    
+            else{
+                console.log(res)
+                alert("Could not Remove from Cart")
+            }        
         });        
     }
 </script>

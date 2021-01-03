@@ -37,11 +37,11 @@
             </nav>
             <div class="container login-container part2">
                 <div class="row">
-                    <div class="col-md-6 login-form-1" style="background-color: rgb(255,255,255,.4);">
+                    <div class="col-md-6 login-form-1" style="background-color: rgb(255,255,255,.5);">
                         <h3 style="font-weight: bolder;">Login</h3>
                         <form method="POST" action="/auth/signin" autocomplete="off">
                             <div class="form-group">
-                                <input type="email" autocomplete=off name="email" class="form-control" placeholder="Your Email *" required value="" />
+                                <input type="email" id="email-inp" autocomplete=off name="email" class="form-control" placeholder="Your Email *" required value="" />
                             </div>
                             <div class="form-group">
                                 <input type="password" autocomplete=off name="password" class="form-control" placeholder="Your Password *" required value="" />
@@ -51,6 +51,35 @@
                             </div>
                         </form>
                         <p class="bg-white text-center text-danger"><%=request.getAttribute("login_error")!=null?request.getAttribute("login_error"):""%></p>
+                        <%
+                            Cookie cookie = null;
+                            Cookie[] cookies = request.getCookies();
+                            if(cookies != null){
+                                boolean show_relogin = false;
+                                String user_email = "";
+                                String user_name = "";
+                                for (int i = 0; i < cookies.length; i++) {
+                                    cookie = cookies[i];                                    
+                                    if((cookie.getName()).compareTo("user_email") == 0){
+                                        show_relogin = true;
+                                        user_email = cookie.getValue();
+                                    }                                  
+                                    else if((cookie.getName()).compareTo("user_name") == 0){
+                                        user_name = cookie.getValue();
+                                    }
+                                }
+                                if(show_relogin){
+                        %>
+                            <h3 style="font-weight: bolder;">Last User</h3>
+                                <div class="card" onclick="document.getElementById('email-inp').value='<%=user_email%>'">
+                                    <div class="card-body">
+                                        <p class="card-title lead"><%=user_name%></p>
+                                    </div>
+                               </div>
+                        <%
+                                }
+                            }
+                        %>
                     </div>
                     <div class="col-md-6 login-form-2 border-left"  style="background-color: rgb(255,255,255,.4);">
                         <h3 style="font-weight: bolder;">Register</h3>

@@ -43,7 +43,7 @@ public class CartServlet extends HttpServlet {
             }
             request.setAttribute("cart_items", result);
             request.setCharacterEncoding("UTF-8");
-            request.getRequestDispatcher("/cart.jsp").forward(request, response);
+            request.getRequestDispatcher("/WEB-INF/cart.jsp").forward(request, response);
         } catch (SQLException e) {
             e.printStackTrace();
         }

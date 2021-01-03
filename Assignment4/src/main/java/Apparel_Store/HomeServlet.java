@@ -62,6 +62,6 @@ public class HomeServlet extends HttpServlet {
         }
         
         request.setCharacterEncoding("UTF-8");
-        request.getRequestDispatcher("/home.jsp").forward(request, response);
+        request.getRequestDispatcher("/WEB-INF/home.jsp").forward(request, response);
     }
 }
