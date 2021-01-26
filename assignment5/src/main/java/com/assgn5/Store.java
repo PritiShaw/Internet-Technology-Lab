@@ -1,7 +1,6 @@
 package com.assgn5;
 
 import javax.persistence.Embeddable;
-import javax.persistence.Id;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
