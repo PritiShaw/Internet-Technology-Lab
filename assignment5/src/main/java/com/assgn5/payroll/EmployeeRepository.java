@@ -13,20 +13,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.greglturnquist.payroll;
+package com.assgn5.payroll;
 
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.data.repository.CrudRepository;
 
 /**
  * @author Greg Turnquist
  */
 // tag::code[]
-@SpringBootApplication
-public class ReactAndSpringDataRestApplication {
+public interface EmployeeRepository extends CrudRepository<Employee, Long> { // <1>
 
-	public static void main(String[] args) {
-		SpringApplication.run(ReactAndSpringDataRestApplication.class, args);
-	}
 }
 // end::code[]

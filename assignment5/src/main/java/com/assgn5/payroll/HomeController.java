@@ -13,15 +13,22 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.greglturnquist.payroll;
+package com.assgn5.payroll;
 
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
  * @author Greg Turnquist
  */
 // tag::code[]
-public interface EmployeeRepository extends CrudRepository<Employee, Long> { // <1>
+@Controller // <1>
+public class HomeController {
+
+	@RequestMapping(value = "/") // <2>
+	public String index() {
+		return "index"; // <3>
+	}
 
 }
 // end::code[]
