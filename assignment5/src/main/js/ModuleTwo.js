@@ -1,14 +1,16 @@
 import React from 'react';
-import {MapContainer, TileLayer, Marker} from 'react-leaflet';
-const ModuleTwo=()=>{
+import {MapContainer, TileLayer, Marker, useMap} from 'react-leaflet';
+
+
+const ModuleTwo=({cords})=>{    
     return(
-        <MapContainer style={{height: "100px", width: "100px"}} center={[51.505, 0.09]} zoom={13} scrollWheelZoom={false}>
+        <MapContainer center={[22.57,88.36]} zoom={10}>
             <TileLayer
-                attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             />
-            <Marker position={[51.505, -0.09]}>
-            </Marker>
+            {
+                cords.map((dot)=><Marker position={dot}/>)
+            }            
         </MapContainer>
     );
 };

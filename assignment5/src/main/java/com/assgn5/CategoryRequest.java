@@ -1,17 +1,20 @@
 package com.assgn5;
 
-public class CategoryRequest {
-    
-    private int cid;
-    private Long storeId;
-    private String StoreName;
-    private String openTime;
-    private String closeTime;
-    private Long latitude;
-    private Long longitude;
+import java.util.List;
 
-    public Category from(){
-        return Category.builder().name(this.StoreName).build();
+import lombok.Builder;
+import lombok.Data;
+
+
+@Data
+@Builder
+public class CategoryRequest {
+    private Long id;
+    private List<Store> stores;
+    private String name;        
+
+    public Category generate(){
+        return Category.builder().id(id).name(name).stores(stores).build();
     }
 
 }
