@@ -21,12 +21,15 @@ public class CategoryServiceImpl implements CategoryService {
         List<Store> stores = category.getStores();
         
         Store newstore = request.addStore();
-        if(newstore !=null)
+        String status = "Failed to Create";
+        if(newstore !=null){
+            status = "Successfully Added"; 
             stores.add(newstore);
+        }
         
         category.setStores(stores);
         categoryRepository.save(category);
         
-        return AddStoreResponse.generateResponse(category);
+        return AddStoreResponse.generateResponse(category, status);
     }
 }

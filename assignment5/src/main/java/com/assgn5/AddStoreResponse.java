@@ -7,8 +7,9 @@ import lombok.Data;
 @Builder
 public class AddStoreResponse {
     private long cid;
+    private String status;
 
-    public static AddStoreResponse generateResponse(Category category){
-        return AddStoreResponse.builder().cid(category.getId()).build(); // Returniing category id of the store added
+    public static AddStoreResponse generateResponse(Category category, String status){
+        return AddStoreResponse.builder().cid(category.getId()).status(status).build(); // Returning category id and status of the store added
     }
 }
