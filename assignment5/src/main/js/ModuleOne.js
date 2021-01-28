@@ -1,7 +1,9 @@
 import React from 'react';
-import { Navbar, Button, Dropdown } from 'react-bootstrap';
+import { Navbar} from 'react-bootstrap';
 
-const ModuleOne = ({category, setCategory}) =>{    
+const ModuleOne = ({category, setCategory, toggleAdmin}) =>{   
+    
+    
     return(
         <Navbar bg="dark" variant="dark">
             <Navbar.Brand href="#home" style={{fontSize:"xxx-large", fontWeight: "bolder"}}>NearBy Stores</Navbar.Brand>            
@@ -15,9 +17,9 @@ const ModuleOne = ({category, setCategory}) =>{
                         <option value={4}>Petrol Station</option>
                         <option value={5}>Hardware Store</option>
                     </select>
-                    {/* <div className="input-group-append">
-                        <span className="input-group-text btn btn-primary">Search</span>                    
-                    </div> */}
+                    <div className="input-group-append">
+                        <span className="input-group-text btn btn-primary ml-2" onClick={()=>toggleAdmin(true)}>Admin</span>
+                    </div>
                 </div>                    
             </div>
         </Navbar>
